@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Basic Bootstrap Template</title>
+    <!-- Bootstrap CSS file -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+    <h1>Hello, world!</h1>
+    <!-- JS files: jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<
+
+<h2>Product Info...!</h2>
+    <hr>
+
+    <b>{{msg}}</b>
+
+<br><br>
+
+<div class="container">
+
+    <form action="http://localhost:5000/save/" method="post" >
+        <br><br>
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="ReadOnly" name="pid" readonly value="{{dbprod.pid}}">
+            </div>
+        <div class="col">
+        <input type="text" class="form-control" placeholder="Enter Product name" name="pname" value="{{dbprod.pname}}">
+        </div>
+  </div>
+
+<br><br>
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Enter Product Price" name="pprice" value="{{dbprod.pprice}}">
+            </div>
+        <div class="col">
+        <input type="text" class="form-control" placeholder="Enter Product Category" name="pcat" value="{{dbprod.pcat}}">
+        </div>
+  </div>
+
+    <br><br>
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Enter Product Vendor"  name="pven" value="{{dbprod.pven}}">
+            </div>
+        <div class="col">
+        <input type="text" class="form-control" placeholder="Enter Product Quantity" name="pqty" value="{{dbprod.pqty}}">
+        </div>
+  </div>
+<!--
+        Product Id : <input type="text" name="pid" readonly value="{{dbprod.pid}}"><br><br>
+        Product Name : <input type="text" name="pname" value="{{dbprod.pname}}"><br><br>
+-->
+        <!--Product Price : <input type="text" name="pprice" value="{{dbprod.pprice}}"><br><br>
+        Product Category : <input type="text" name="pcat" value="{{dbprod.pcat}}"><br><br>-->
+        <!--Product Vendor : <input type="text" name="pven" value="{{dbprod.pven}}"><br><br>
+        Product Qty : <input type="text" name="pqty" value="{{dbprod.pqty}}"><br><br>-->
+        <br><br>
+        <input type="submit" ><br><br>
+    </form>
+<br>
+<br>
+<hr>
+
+<table class="table table-striped">
+    <thead>
+        <td scope="col">Id</td>
+        <td scope="col">Name</td>
+        <td scope="col">Category</td>
+        <td scope="col">Price</td>
+        <td scope="col">Vendor</td>
+        <td scope="col">Quantity</td>
+        <td scope="col">Actions</td>
+    </thead>
+    {% for prod in products %}
+    <tbody>
+        <td>{{prod.pid}}</td>
+        <td>{{prod.pname}}</td>
+        <td>{{prod.pcat}}</td>
+        <td>{{prod.pprice}}</td>
+        <td>{{prod.pven}}</td>
+        <td>{{prod.pqty}}</td>
+        <td>
+            <a href="{{ '/product/edit/%s'%prod.pid}}">Edit</a>
+            <a href="{{ '/product/delete/%s'%prod.pid }}">Delete</a>
+
+        </td>
+    </tbody>
+    {% endfor %}
+</table>
+
+
+
+
+</div>
+</body>
+</html>
